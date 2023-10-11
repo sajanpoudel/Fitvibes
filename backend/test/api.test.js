@@ -95,3 +95,15 @@ test("?limit= is passed on to the collection", async () => {
   await request(app).get("/api/body");
   assert.deepEqual(received, {});
 });
+
+test("GET /api/health answers without reading the database", async () => {
+  let reads = 0;
+  const app = createApp(() => {
+    reads++;
+    return { find: () => ({ toArray: async () => [] }) };
+  });
+  const res = await request(app).get("/api/health");
+  assert.equal(res.status, 200);
+  assert.deepEqual(res.body, { status: "ok", collections: COLLECTIONS });
+  assert.equal(reads, 0);
+});

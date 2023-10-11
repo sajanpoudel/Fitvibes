@@ -17,6 +17,9 @@ function createApp(getCollection) {
   const app = express();
   app.use(cors());
 
+  // A cheap route for monitors and load balancers. It does not touch the database.
+  app.get("/api/health", (req, res) => res.json({ status: "ok", collections: COLLECTIONS }));
+
   COLLECTIONS.forEach((name) =>
     app.get(`/api/${name}`, async (req, res) => {
       try {
