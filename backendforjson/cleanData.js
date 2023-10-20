@@ -65,6 +65,7 @@ async function buildCleanData(db) {
 function createApp(db) {
   const app = express();
   app.use(cors());
+  app.get("/api/health", (req, res) => res.json({ status: "ok" }));
   app.get("/api/cleanData", async (req, res) => {
     try {
       res.json(await buildCleanData(db));

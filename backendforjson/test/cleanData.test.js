@@ -69,3 +69,9 @@ test("database errors give a 500 with an error body", async () => {
   assert.equal(res.status, 500);
   assert.deepEqual(res.body, { error: "An error occurred" });
 });
+
+test("GET /api/health answers ok", async () => {
+  const res = await request(createApp(fakeDb({}))).get("/api/health");
+  assert.equal(res.status, 200);
+  assert.deepEqual(res.body, { status: "ok" });
+});
