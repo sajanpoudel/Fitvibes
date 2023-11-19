@@ -2,7 +2,7 @@ const test = require("node:test");
 const assert = require("node:assert/strict");
 const request = require("supertest");
 
-const { createApp, COLLECTIONS } = require("../app");
+const { createApp, parseLimit, COLLECTIONS, MAX_LIMIT } = require("../app");
 
 // A collection that returns the documents it was given.
 const fakeDb = (documents = {}) => (name) => ({
@@ -74,4 +74,24 @@ test("cross origin requests are allowed", async () => {
 test("only GET is supported", async () => {
   const res = await request(createApp(fakeDb())).post("/api/body");
   assert.equal(res.status, 404);
+});
+
+test("parseLimit accepts whole numbers up to the maximum", () => {
+  assert.equal(parseLimit("25"), 25);
+  assert.equal(parseLimit("5000"), MAX_LIMIT);
+  for (const value of [undefined, "", "abc", "0", "-3"]) assert.equal(parseLimit(value), undefined);
+});
+
+test("?limit= is passed on to the collection", async () => {
+  let received;
+  const app = createApp(() => ({
+    find: (query, options) => {
+      received = options;
+      return { toArray: async () => [] };
+    },
+  }));
+  await request(app).get("/api/body?limit=10");
+  assert.deepEqual(received, { limit: 10 });
+  await request(app).get("/api/body");
+  assert.deepEqual(received, {});
 });

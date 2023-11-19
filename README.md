@@ -34,7 +34,7 @@ MONGO_URI="mongodb+srv://<user>:<password>@<cluster>.mongodb.net/" node index.js
 
 | Endpoint | Server | Returns |
 | --- | --- | --- |
-| `/api/activity`, `/api/body`, `/api/daily`, `/api/sleep` | backend | Every document of that collection |
+| `/api/activity`, `/api/body`, `/api/daily`, `/api/sleep` | backend | The documents of that collection, optionally `?limit=N` (1 to 1000) |
 | `/api/cleanData` | backendforjson | A merged summary of selected fields from all four collections |
 
 The chat page in `Health/` expects an OpenAI API key in `API_KEY` inside `ChatAI.js`.

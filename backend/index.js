@@ -13,10 +13,10 @@ const client = new MongoClient(mongoURI, { useNewUrlParser: true, useUnifiedTopo
 
 // The collection is looked up on every request, after the client has connected once.
 const app = createApp((name) => ({
-  find: (query) => ({
+  find: (query, options) => ({
     toArray: async () => {
       await client.connect();
-      return client.db(DB_NAME).collection(name).find(query).toArray();
+      return client.db(DB_NAME).collection(name).find(query, options).toArray();
     },
   }),
 }));
