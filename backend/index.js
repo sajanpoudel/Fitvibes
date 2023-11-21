@@ -1,6 +1,5 @@
-const express = require("express");
-const cors = require("cors");
 const { MongoClient } = require("mongodb");
+const { createApp } = require("./app");
 
 const mongoURI = process.env.MONGO_URI;
 if (!mongoURI) {
@@ -9,26 +8,18 @@ if (!mongoURI) {
 }
 const DB_NAME = "cluster0"; // Update with your database name
 const PORT = process.env.PORT || 5000;
-const COLLECTIONS = ["activity", "body", "daily", "sleep"];
 
-const app = express();
 const client = new MongoClient(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true });
 
-app.use(cors());
-
-// Builds a route handler that returns every document of one collection as JSON.
-const sendCollection = (collectionName) => async (req, res) => {
-  try {
-    await client.connect();
-    const data = await client.db(DB_NAME).collection(collectionName).find({}).toArray();
-    res.json(data);
-  } catch (error) {
-    console.error(`Error retrieving ${collectionName} data:`, error);
-    res.status(500).send("Internal Server Error");
-  }
-};
-
-COLLECTIONS.forEach((name) => app.get(`/api/${name}`, sendCollection(name)));
+// The collection is looked up on every request, after the client has connected once.
+const app = createApp((name) => ({
+  find: (query) => ({
+    toArray: async () => {
+      await client.connect();
+      return client.db(DB_NAME).collection(name).find(query).toArray();
+    },
+  }),
+}));
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
