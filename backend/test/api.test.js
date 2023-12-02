@@ -12,3 +12,10 @@ const fakeDb = (documents = {}) => (name) => ({
 test("lists the four collections", () => {
   assert.deepEqual(COLLECTIONS, ["activity", "body", "daily", "sleep"]);
 });
+
+test("GET /api/activity returns the activity documents", async () => {
+  const app = createApp(fakeDb({ activity: [{ steps: 100 }] }));
+  const res = await request(app).get("/api/activity");
+  assert.equal(res.status, 200);
+  assert.deepEqual(res.body, [{ steps: 100 }]);
+});
