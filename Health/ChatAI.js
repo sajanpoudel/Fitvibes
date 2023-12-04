@@ -7,20 +7,21 @@ const buttonElements = document.querySelectorAll(".bt");
 
 let userText = null;
 const API_KEY = "YOUR API KEY"; // Paste your API key here
-const json_phrase = fetch("http://localhost:8080/api/cleanData")
+// The latest health summary from the backend, as text. It stays empty when the backend is down.
+let healthData = "";
+fetch("http://localhost:8080/api/cleanData")
   .then((response) => {
     if (!response.ok) {
       throw new Error("Network response was not ok");
     }
-    return response.text(); // Convert the response to a string
+    return response.text();
   })
   .then((data) => {
-    console.log(data); // Log the fetched data as a string
+    healthData = data;
   })
   .catch((error) => {
     console.error("Fetch error:", error);
   });
-console.log(json_phrase);
 
 const queryintro =
   "Welcome to your Personalized Virtual Health Assistant. Your primary purpose is to provide users with accurate and helpful health-related information, address their inquiries, and assist in making informed decisions for better health and wellness. To fulfill this role effectively, you should aim to offer valuable insights, tips, and guidance based on individual health data and preferences. Whether it's dietary advice, fitness routines, stress management, sleep quality improvement, or general wellness tips, you're here to empower users with the knowledge and support they need. Your responses should be informative, empathetic, and tailored to the user's specific context and needs. You can also engage in natural conversations to answer questions, discuss health topics, and encourage users on their health journey. Remember, your goal is to act as the perfect health companion, guiding users toward healthier choices and lifestyles. Let's begin with a health tip, even if no data is available, to positively influence the user's health journey.";
@@ -192,16 +193,16 @@ buttonElements.forEach((button) => {
     // Create prompts based on the button clicked
     switch (action) {
       case "personalized":
-        prompt = `${queryintro} Given the user's health data, provide personalized insights and recommendations for better health. The user's recent data includes step count, sleep duration, and resting heart rate. ${json_phrase}.`;
+        prompt = `${queryintro} Given the user's health data, provide personalized insights and recommendations for better health. The user's recent data includes step count, sleep duration, and resting heart rate. ${healthData}.`;
         break;
       case "goal":
-        prompt = `${queryintro} Assist the user in setting up a system to track their health goals and monitor their progress. The user's health goals and metrics to track will be provided in the conversation. ${json_phrase}.`;
+        prompt = `${queryintro} Assist the user in setting up a system to track their health goals and monitor their progress. The user's health goals and metrics to track will be provided in the conversation. ${healthData}.`;
         break;
       case "nutritional":
-        prompt = ` ${queryintro} Offer dietary advice based on the user's dietary preferences, restrictions, and health objectives. The user's dietary information will be shared in the conversation. ${json_phrase}.`;
+        prompt = ` ${queryintro} Offer dietary advice based on the user's dietary preferences, restrictions, and health objectives. The user's dietary information will be shared in the conversation. ${healthData}.`;
         break;
       case "workouts":
-        prompt = `${queryintro} Generate customized exercise plans tailored to the user's fitness level, preferred workout duration, and specific fitness goals. The user's fitness details will be provided in the conversation. Please construct the table for the workout of the whole week. ${json_phrase}.`;
+        prompt = `${queryintro} Generate customized exercise plans tailored to the user's fitness level, preferred workout duration, and specific fitness goals. The user's fitness details will be provided in the conversation. Please construct the table for the workout of the whole week. ${healthData}.`;
         break;
     }
 
