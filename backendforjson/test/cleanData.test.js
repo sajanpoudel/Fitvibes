@@ -2,7 +2,7 @@ const test = require("node:test");
 const assert = require("node:assert/strict");
 const request = require("supertest");
 
-const { createApp, buildCleanData, projections } = require("../cleanData");
+const { createApp, buildCleanData, cachedBuilder, projections } = require("../cleanData");
 
 // A database whose collections return fixed documents and remember the options they were called with.
 function fakeDb(documents) {
@@ -74,4 +74,25 @@ test("GET /api/health answers ok", async () => {
   const res = await request(createApp(fakeDb({}))).get("/api/health");
   assert.equal(res.status, 200);
   assert.deepEqual(res.body, { status: "ok" });
+});
+
+test("cachedBuilder reuses the value until the time to live is over", async () => {
+  let calls = 0;
+  let clock = 0;
+  const get = cachedBuilder(async () => ++calls, 1000, () => clock);
+  assert.equal(await get(), 1);
+  clock = 999;
+  assert.equal(await get(), 1);
+  clock = 1000;
+  assert.equal(await get(), 2);
+  assert.equal(calls, 2);
+});
+
+test("the route builds the summary once within the cache time", async () => {
+  let builds = 0;
+  const app = createApp(fakeDb({}), { build: async () => ({ n: ++builds }), ttlMs: 60000 });
+  await request(app).get("/api/cleanData");
+  const res = await request(app).get("/api/cleanData");
+  assert.deepEqual(res.body, { n: 1 });
+  assert.equal(builds, 1);
 });

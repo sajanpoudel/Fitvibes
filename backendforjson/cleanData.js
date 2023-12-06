@@ -62,13 +62,30 @@ async function buildCleanData(db) {
   return merged;
 }
 
-function createApp(db) {
+// Keeps the merged summary for a short time, because four queries per request are wasteful
+// when the chat page asks for the same data over and over.
+function cachedBuilder(build, ttlMs, now = Date.now) {
+  let value;
+  let storedAt = -Infinity;
+  return async (db) => {
+    if (now() - storedAt >= ttlMs) {
+      value = await build(db);
+      storedAt = now();
+    }
+    return value;
+  };
+}
+
+const CACHE_MS = 60 * 1000;
+
+function createApp(db, { build = buildCleanData, ttlMs = CACHE_MS, now = Date.now } = {}) {
+  const cleanData = cachedBuilder(build, ttlMs, now);
   const app = express();
   app.use(cors());
   app.get("/api/health", (req, res) => res.json({ status: "ok" }));
   app.get("/api/cleanData", async (req, res) => {
     try {
-      res.json(await buildCleanData(db));
+      res.json(await cleanData(db));
     } catch (err) {
       console.error(err);
       res.status(500).json({ error: "An error occurred" });
@@ -77,4 +94,4 @@ function createApp(db) {
   return app;
 }
 
-module.exports = { createApp, buildCleanData, projections };
+module.exports = { createApp, buildCleanData, cachedBuilder, projections };
