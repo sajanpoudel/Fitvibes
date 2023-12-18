@@ -8,7 +8,7 @@ const deleteButton = document.querySelector("#delete-btn");
 const buttonElements = document.querySelectorAll(".bt");
 
 let userText = null;
-const API_KEY = "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"; // Paste your API key here
+const API_KEY = "YOUR API KEY"; // Paste your API key here
 const json_phrase = fetch('http://localhost:8080/api/cleanData')
 .then((response) => {
   if (!response.ok) {
