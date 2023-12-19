@@ -26,3 +26,10 @@ test("GET /api/body returns the body documents", async () => {
   assert.equal(res.status, 200);
   assert.equal(res.body.length, 2);
 });
+
+test("GET /api/daily returns the daily documents", async () => {
+  const app = createApp(fakeDb({ daily: [{ id: 1 }, { id: 2 }] }));
+  const res = await request(app).get("/api/daily");
+  assert.equal(res.status, 200);
+  assert.equal(res.body.length, 2);
+});
