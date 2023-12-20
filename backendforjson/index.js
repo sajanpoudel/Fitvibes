@@ -6,7 +6,11 @@ const cors = require('cors');
 app.use(cors());
 
 
-const url = 'mongodb+srv://miyannishar786:miyannishar786@cluster0.ynel6uq.mongodb.net/';
+const url = process.env.MONGO_URI;
+if (!url) {
+  console.error('Set the MONGO_URI environment variable to your MongoDB connection string.');
+  process.exit(1);
+}
 const dbName = 'cluster0';
 const collectionName1 = 'daily';
 const collectionName2 = 'activity';
@@ -85,7 +89,7 @@ const collectionName4 = 'sleep';
       }
     });
 
-    const port = 8080;
+    const port = process.env.PORT || 8080;
     app.listen(port, () => {
       console.log(`Server is listening on port ${port}`);
     });
