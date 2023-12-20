@@ -40,3 +40,8 @@ test("GET /api/sleep returns the sleep documents", async () => {
   assert.equal(res.status, 200);
   assert.equal(res.body.length, 2);
 });
+
+test("an empty collection gives an empty list", async () => {
+  const res = await request(createApp(fakeDb())).get("/api/sleep");
+  assert.deepEqual(res.body, []);
+});
