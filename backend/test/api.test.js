@@ -60,3 +60,8 @@ test("database errors give a 500", async () => {
   assert.equal(res.status, 500);
   assert.equal(res.text, "Internal Server Error");
 });
+
+test("unknown routes give a 404", async () => {
+  const res = await request(createApp(fakeDb())).get("/api/unknown");
+  assert.equal(res.status, 404);
+});
