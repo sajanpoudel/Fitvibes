@@ -33,3 +33,10 @@ test("GET /api/daily returns the daily documents", async () => {
   assert.equal(res.status, 200);
   assert.equal(res.body.length, 2);
 });
+
+test("GET /api/sleep returns the sleep documents", async () => {
+  const app = createApp(fakeDb({ sleep: [{ id: 1 }, { id: 2 }] }));
+  const res = await request(app).get("/api/sleep");
+  assert.equal(res.status, 200);
+  assert.equal(res.body.length, 2);
+});
