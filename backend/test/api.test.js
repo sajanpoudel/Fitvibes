@@ -65,3 +65,8 @@ test("unknown routes give a 404", async () => {
   const res = await request(createApp(fakeDb())).get("/api/unknown");
   assert.equal(res.status, 404);
 });
+
+test("cross origin requests are allowed", async () => {
+  const res = await request(createApp(fakeDb())).get("/api/body").set("Origin", "http://localhost:3000");
+  assert.equal(res.headers["access-control-allow-origin"], "*");
+});
