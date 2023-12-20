@@ -50,3 +50,13 @@ test("each route only returns its own collection", async () => {
   const app = createApp(fakeDb({ activity: [{ a: 1 }], body: [{ b: 1 }] }));
   assert.deepEqual((await request(app).get("/api/body")).body, [{ b: 1 }]);
 });
+
+test("database errors give a 500", async () => {
+  const broken = () => ({ find: () => ({ toArray: async () => { throw new Error("down"); } }) });
+  const originalError = console.error;
+  console.error = () => {};
+  const res = await request(createApp(broken)).get("/api/daily");
+  console.error = originalError;
+  assert.equal(res.status, 500);
+  assert.equal(res.text, "Internal Server Error");
+});
