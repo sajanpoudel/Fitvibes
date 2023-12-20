@@ -45,3 +45,8 @@ test("an empty collection gives an empty list", async () => {
   const res = await request(createApp(fakeDb())).get("/api/sleep");
   assert.deepEqual(res.body, []);
 });
+
+test("each route only returns its own collection", async () => {
+  const app = createApp(fakeDb({ activity: [{ a: 1 }], body: [{ b: 1 }] }));
+  assert.deepEqual((await request(app).get("/api/body")).body, [{ b: 1 }]);
+});
