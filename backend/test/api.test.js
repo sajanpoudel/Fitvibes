@@ -70,3 +70,8 @@ test("cross origin requests are allowed", async () => {
   const res = await request(createApp(fakeDb())).get("/api/body").set("Origin", "http://localhost:3000");
   assert.equal(res.headers["access-control-allow-origin"], "*");
 });
+
+test("only GET is supported", async () => {
+  const res = await request(createApp(fakeDb())).post("/api/body");
+  assert.equal(res.status, 404);
+});
