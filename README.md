@@ -14,3 +14,27 @@ Creating our project was a team effort that involved dividing our tasks to get t
 Looking ahead, FitVibes has a promising future, rooted in the lessons from our journey. We see FitVibes growing into a comprehensive health and fitness ecosystem, delivering personalized health recommendations and offering a holistic view of users' well-being. The platform's potential to integrate with a wide range of health and fitness apps, promote community and telehealth, contribute to health science, and expand internationally makes it a catalyst for positive change.
 
 FitVibes aims to become a one-stop destination for health and fitness, where users can not only access data-driven insights but also interact with a supportive community, seek professional guidance, and engage in global health research efforts. The future of FitVibes is characterized by innovation, inclusivity, and a strong commitment to empowering individuals on their journey toward better health and well-being.
+
+
+## Running the backends
+
+Both servers read the MongoDB connection string from the `MONGO_URI` environment variable. Copy `.env.example` to `.env` inside the folder, fill in your own connection string, then export it before starting.
+
+```
+cd backend
+npm install
+MONGO_URI="mongodb+srv://<user>:<password>@<cluster>.mongodb.net/" node index.js   # port 5000
+```
+
+```
+cd backendforjson
+npm install
+MONGO_URI="mongodb+srv://<user>:<password>@<cluster>.mongodb.net/" node index.js   # port 8080
+```
+
+| Endpoint | Server | Returns |
+| --- | --- | --- |
+| `/api/activity`, `/api/body`, `/api/daily`, `/api/sleep` | backend | Every document of that collection |
+| `/api/cleanData` | backendforjson | A merged summary of selected fields from all four collections |
+
+The chat page in `Health/` expects an OpenAI API key in `API_KEY` inside `ChatAI.js`.
