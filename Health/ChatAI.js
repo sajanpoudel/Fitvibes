@@ -45,6 +45,13 @@ console.log(json_phrase);
     chatContainer.scrollTo(0, chatContainer.scrollHeight); // Scroll to bottom of the chat container
 }
 
+const escapeHtml = (text) => {
+    // Show user text as plain text instead of letting it be parsed as HTML
+    const div = document.createElement("div");
+    div.textContent = text;
+    return div.innerHTML;
+}
+
 const createChatElement = (content, className) => {
     // Create new div and apply chat, specified class and set html content of div
     const chatDiv = document.createElement("div");
@@ -130,7 +137,7 @@ const handleOutgoingChat = () => {
     const html = `<div class="chat-content">
                     <div class="chat-details">
                         <img src="https://media.giphy.com/media/LkXqtfMq1nyHtQARSi/giphy.gif" alt="user-img">
-                        <p>${userText}</p>
+                        <p>${escapeHtml(userText)}</p>
                     </div>
                 </div>`;
 
