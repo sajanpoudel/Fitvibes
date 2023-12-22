@@ -1,15 +1,15 @@
-const express = require('express');
-const cors = require('cors');
-const { MongoClient } = require('mongodb');
+const express = require("express");
+const cors = require("cors");
+const { MongoClient } = require("mongodb");
 
 const mongoURI = process.env.MONGO_URI;
 if (!mongoURI) {
-  console.error('Set the MONGO_URI environment variable to your MongoDB connection string.');
+  console.error("Set the MONGO_URI environment variable to your MongoDB connection string.");
   process.exit(1);
 }
-const DB_NAME = 'cluster0'; // Update with your database name
+const DB_NAME = "cluster0"; // Update with your database name
 const PORT = process.env.PORT || 5000;
-const COLLECTIONS = ['activity', 'body', 'daily', 'sleep'];
+const COLLECTIONS = ["activity", "body", "daily", "sleep"];
 
 const app = express();
 const client = new MongoClient(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true });
@@ -24,7 +24,7 @@ const sendCollection = (collectionName) => async (req, res) => {
     res.json(data);
   } catch (error) {
     console.error(`Error retrieving ${collectionName} data:`, error);
-    res.status(500).send('Internal Server Error');
+    res.status(500).send("Internal Server Error");
   }
 };
 
