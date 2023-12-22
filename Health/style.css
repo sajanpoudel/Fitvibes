@@ -1,5 +1,5 @@
 /* Import Google font - Poppins */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
 * {
   margin: 0;
   padding: 0;
@@ -7,8 +7,8 @@
   font-family: "Poppins", sans-serif;
 }
 :root {
-  --text-color: #FFFFFF;
-  --icon-color: #ACACBE;
+  --text-color: #ffffff;
+  --icon-color: #acacbe;
   --icon-hover-bg: #5b5e71;
   --placeholder-color: #dcdcdc;
   --outgoing-chat-bg: #343541;
@@ -21,35 +21,34 @@
   --icon-color: #a9a9bc;
   --icon-hover-bg: #f1f1f3;
   --placeholder-color: #6c6c6c;
-  --outgoing-chat-bg: #FFFFFF;
-  --incoming-chat-bg: #F7F7F8;
-  --outgoing-chat-border: #FFFFFF;
-  --incoming-chat-border: #D9D9E3;
+  --outgoing-chat-bg: #ffffff;
+  --incoming-chat-bg: #f7f7f8;
+  --outgoing-chat-border: #ffffff;
+  --incoming-chat-border: #d9d9e3;
 }
 body {
   background: var(--outgoing-chat-bg);
 }
 
 /* Chats container styling */
-.stack{
-    padding: 50px;
-    display: flex;
-    height: 60%;
-    width:60%;
-    justify-content: space-around;
-    margin: auto;
-
-}.stack .bt{
-    margin:15px;
-    padding: 10px;
-    font-size: large;
-    /* width: 200px;
+.stack {
+  padding: 50px;
+  display: flex;
+  height: 60%;
+  width: 60%;
+  justify-content: space-around;
+  margin: auto;
+}
+.stack .bt {
+  margin: 15px;
+  padding: 10px;
+  font-size: large;
+  /* width: 200px;
     height: 100px; */
 }
 .chat-container {
-   
   padding-top: 0;
-  
+
   margin-bottom: 100px;
 }
 /* .img-logo{
@@ -63,17 +62,18 @@ body {
 }
 
 .animated-image {
-  height:60px;
-  width:60px;
+  height: 60px;
+  width: 60px;
   animation: imageAnimation 1s infinite; /* 2 seconds for increase and 2 seconds for decrease */
 }
 
 @keyframes imageAnimation {
-  0%, 100% {
-      transform: scale(1); /* Initial and final size (100%) */
+  0%,
+  100% {
+    transform: scale(1); /* Initial and final size (100%) */
   }
   50% {
-      transform: scale(1.4); /* 10% increase at 2 seconds */
+    transform: scale(1.4); /* 10% increase at 2 seconds */
   }
 }
 :where(.chat-container, textarea)::-webkit-scrollbar {
@@ -176,7 +176,8 @@ span.material-symbols-rounded {
   margin-left: 0;
 }
 @keyframes animateDots {
-  0%,44% {
+  0%,
+  44% {
     transform: translateY(0px);
   }
   28% {
@@ -261,27 +262,23 @@ span.material-symbols-rounded {
 
 /* Reponsive Media Query */
 @media screen and (max-width: 600px) {
-  .stack{
-    
+  .stack {
     display: flex;
     flex-direction: column;
     margin: auto;
     width: 100%;
-   
-
-}
-.stack .bt{
-  margin:5px;
-  height: auto;
-  width: auto;
-  padding: 10px;
-  
-}
+  }
+  .stack .bt {
+    margin: 5px;
+    height: auto;
+    width: auto;
+    padding: 10px;
+  }
   .default-text h1 {
     font-size: 2.3rem;
   }
   :where(.default-text p, textarea, .chat p) {
-    font-size: 0.95rem!important;
+    font-size: 0.95rem !important;
   }
   .chat-container .chat {
     padding: 20px 10px;
@@ -311,6 +308,6 @@ span.material-symbols-rounded {
     margin-left: 5px;
   }
   span.material-symbols-rounded {
-    font-size: 1.25rem!important;
+    font-size: 1.25rem !important;
   }
 }
