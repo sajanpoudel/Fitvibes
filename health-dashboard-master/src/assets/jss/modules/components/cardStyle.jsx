@@ -13,22 +13,22 @@ const cardStyle = {
     flexDirection: "column",
     minWidth: "0",
     wordWrap: "break-word",
-    fontSize: ".875rem"
+    fontSize: ".875rem",
   },
   cardPlain: {
     background: "transparent",
-    boxShadow: "none"
+    boxShadow: "none",
   },
   cardProfile: {
     marginTop: "30px",
-    textAlign: "center"
+    textAlign: "center",
   },
   cardChart: {
     "& p": {
       marginTop: "0px",
-      paddingTop: "0px"
-    }
-  }
+      paddingTop: "0px",
+    },
+  },
 };
 
 export default cardStyle;
