@@ -6,10 +6,10 @@ import {
   infoColor,
   successColor,
   warningColor,
-  dangerColor
+  dangerColor,
 } from "../../../../assets/jss/main.jsx";
 
-const headerStyle = theme => ({
+const headerStyle = (theme) => ({
   appBar: {
     backgroundColor: "transparent",
     boxShadow: "none",
@@ -25,14 +25,14 @@ const headerStyle = theme => ({
     padding: "10px 0",
     transition: "all 150ms ease 0s",
     minHeight: "50px",
-    display: "block"
+    display: "block",
   },
   container: {
     ...container,
-    minHeight: "50px"
+    minHeight: "50px",
   },
   flex: {
-    flex: 1
+    flex: 1,
   },
   title: {
     ...defaultFont,
@@ -42,37 +42,37 @@ const headerStyle = theme => ({
     textTransform: "none",
     color: "inherit",
     "&:hover,&:focus": {
-      background: "transparent"
-    }
+      background: "transparent",
+    },
   },
   appResponsive: {
-    top: "8px"
+    top: "8px",
   },
   primary: {
     backgroundColor: primaryColor,
     color: "#FFFFFF",
-    ...defaultBoxShadow
+    ...defaultBoxShadow,
   },
   info: {
     backgroundColor: infoColor,
     color: "#FFFFFF",
-    ...defaultBoxShadow
+    ...defaultBoxShadow,
   },
   success: {
     backgroundColor: successColor,
     color: "#FFFFFF",
-    ...defaultBoxShadow
+    ...defaultBoxShadow,
   },
   warning: {
     backgroundColor: warningColor,
     color: "#FFFFFF",
-    ...defaultBoxShadow
+    ...defaultBoxShadow,
   },
   danger: {
     backgroundColor: dangerColor,
     color: "#FFFFFF",
-    ...defaultBoxShadow
-  }
+    ...defaultBoxShadow,
+  },
 });
 
 export default headerStyle;
