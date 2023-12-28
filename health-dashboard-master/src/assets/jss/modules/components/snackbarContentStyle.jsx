@@ -5,7 +5,7 @@ import {
   successBoxShadow,
   warningBoxShadow,
   dangerBoxShadow,
-  roseBoxShadow
+  roseBoxShadow,
 } from "../../../../assets/jss/main.jsx";
 
 const snackbarContentStyle = {
@@ -21,56 +21,56 @@ const snackbarContentStyle = {
     color: "#555555",
     borderRadius: "3px",
     boxShadow:
-      "0 12px 20px -10px rgba(255, 255, 255, 0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(255, 255, 255, 0.2)"
+      "0 12px 20px -10px rgba(255, 255, 255, 0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(255, 255, 255, 0.2)",
   },
   top20: {
-    top: "20px"
+    top: "20px",
   },
   top40: {
-    top: "40px"
+    top: "40px",
   },
   info: {
     backgroundColor: "#00d3ee",
     color: "#ffffff",
-    ...infoBoxShadow
+    ...infoBoxShadow,
   },
   success: {
     backgroundColor: "#5cb860",
     color: "#ffffff",
-    ...successBoxShadow
+    ...successBoxShadow,
   },
   warning: {
     backgroundColor: "#ffa21a",
     color: "#ffffff",
-    ...warningBoxShadow
+    ...warningBoxShadow,
   },
   danger: {
     backgroundColor: "#f55a4e",
     color: "#ffffff",
-    ...dangerBoxShadow
+    ...dangerBoxShadow,
   },
   primary: {
     backgroundColor: "#af2cc5",
     color: "#ffffff",
-    ...primaryBoxShadow
+    ...primaryBoxShadow,
   },
   rose: {
     backgroundColor: "#eb3573",
     color: "#ffffff",
-    ...roseBoxShadow
+    ...roseBoxShadow,
   },
   message: {
     padding: "0",
     display: "block",
-    maxWidth: "89%"
+    maxWidth: "89%",
   },
   close: {
     width: "11px",
-    height: "11px"
+    height: "11px",
   },
   iconButton: {
     width: "24px",
-    height: "24px"
+    height: "24px",
   },
   icon: {
     display: "block",
@@ -79,30 +79,30 @@ const snackbarContentStyle = {
     top: "50%",
     marginTop: "-15px",
     width: "30px",
-    height: "30px"
+    height: "30px",
   },
   infoIcon: {
-    color: "#00d3ee"
+    color: "#00d3ee",
   },
   successIcon: {
-    color: "#5cb860"
+    color: "#5cb860",
   },
   warningIcon: {
-    color: "#ffa21a"
+    color: "#ffa21a",
   },
   dangerIcon: {
-    color: "#f55a4e"
+    color: "#f55a4e",
   },
   primaryIcon: {
-    color: "#af2cc5"
+    color: "#af2cc5",
   },
   roseIcon: {
-    color: "#eb3573"
+    color: "#eb3573",
   },
   iconMessage: {
     paddingLeft: "50px",
-    display: "block"
-  }
+    display: "block",
+  },
 };
 
 export default snackbarContentStyle;
