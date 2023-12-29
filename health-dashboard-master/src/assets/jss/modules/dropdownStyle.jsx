@@ -1,16 +1,12 @@
-import {
-  primaryColor,
-  primaryBoxShadow,
-  defaultFont
-} from "../../../assets/jss/main.jsx";
+import { primaryColor, primaryBoxShadow, defaultFont } from "../../../assets/jss/main.jsx";
 
-const dropdownStyle = theme => ({
+const dropdownStyle = (theme) => ({
   buttonLink: {
     [theme.breakpoints.down("md")]: {
       display: "flex",
       marginLeft: "30px",
-      width: "auto"
-    }
+      width: "auto",
+    },
   },
   links: {
     width: "20px",
@@ -21,16 +17,16 @@ const dropdownStyle = theme => ({
       width: "30px",
       height: "30px",
       color: "#a9afbb",
-      marginRight: "15px"
-    }
+      marginRight: "15px",
+    },
   },
   linkText: {
     zIndex: "4",
     ...defaultFont,
-    fontSize: "14px"
+    fontSize: "14px",
   },
   popperClose: {
-    pointerEvents: "none"
+    pointerEvents: "none",
   },
   popperResponsive: {
     [theme.breakpoints.down("md")]: {
@@ -43,8 +39,8 @@ const dropdownStyle = theme => ({
       border: "0",
       WebkitBoxShadow: "none",
       boxShadow: "none",
-      color: "black"
-    }
+      color: "black",
+    },
   },
   popperNav: {
     [theme.breakpoints.down("sm")]: {
@@ -68,11 +64,11 @@ const dropdownStyle = theme => ({
           padding: "10px 15px !important",
           "&:hover": {
             backgroundColor: "hsla(0,0%,78%,.2)",
-            boxShadow: "none"
-          }
-        }
-      }
-    }
+            boxShadow: "none",
+          },
+        },
+      },
+    },
   },
   dropdown: {
     borderRadius: "3px",
@@ -88,7 +84,7 @@ const dropdownStyle = theme => ({
     listStyle: "none",
     backgroundColor: "#fff",
     WebkitBackgroundClip: "padding-box",
-    backgroundClip: "padding-box"
+    backgroundClip: "padding-box",
   },
   dropdownItem: {
     ...defaultFont,
@@ -111,9 +107,9 @@ const dropdownStyle = theme => ({
     "&:hover": {
       backgroundColor: primaryColor,
       color: "#FFFFFF",
-      ...primaryBoxShadow
-    }
-  }
+      ...primaryBoxShadow,
+    },
+  },
 });
 
 export default dropdownStyle;
