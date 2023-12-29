@@ -6,30 +6,30 @@ import {
   infoColor,
   roseColor,
   grayColor,
-  defaultFont
+  defaultFont,
 } from "../../../../assets/jss/main.jsx";
 
-const tableStyle = theme => ({
+const tableStyle = (theme) => ({
   warningTableHeader: {
-    color: warningColor
+    color: warningColor,
   },
   primaryTableHeader: {
-    color: primaryColor
+    color: primaryColor,
   },
   dangerTableHeader: {
-    color: dangerColor
+    color: dangerColor,
   },
   successTableHeader: {
-    color: successColor
+    color: successColor,
   },
   infoTableHeader: {
-    color: infoColor
+    color: infoColor,
   },
   roseTableHeader: {
-    color: roseColor
+    color: roseColor,
   },
   grayTableHeader: {
-    color: grayColor
+    color: grayColor,
   },
   table: {
     marginBottom: "0",
@@ -37,24 +37,24 @@ const tableStyle = theme => ({
     maxWidth: "100%",
     backgroundColor: "transparent",
     borderSpacing: "0",
-    borderCollapse: "collapse"
+    borderCollapse: "collapse",
   },
   tableHeadCell: {
     color: "inherit",
     ...defaultFont,
-    fontSize: "1em"
+    fontSize: "1em",
   },
   tableCell: {
     ...defaultFont,
     lineHeight: "1.42857143",
     padding: "12px 8px",
-    verticalAlign: "middle"
+    verticalAlign: "middle",
   },
   tableResponsive: {
     width: "100%",
     marginTop: theme.spacing.unit * 3,
-    overflowX: "auto"
-  }
+    overflowX: "auto",
+  },
 });
 
 export default tableStyle;
