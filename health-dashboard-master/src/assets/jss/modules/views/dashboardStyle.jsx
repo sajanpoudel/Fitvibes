@@ -2,11 +2,11 @@ import { successColor } from "../../../../assets/jss/main.jsx";
 
 const dashboardStyle = {
   successText: {
-    color: successColor
+    color: successColor,
   },
   upArrowCardCategory: {
     width: "16px",
-    height: "16px"
+    height: "16px",
   },
   stats: {
     color: "#999999",
@@ -19,15 +19,15 @@ const dashboardStyle = {
       height: "16px",
       position: "relative",
       marginRight: "3px",
-      marginLeft: "3px"
+      marginLeft: "3px",
     },
     "& .fab,& .fas,& .far,& .fal,& .material-icons": {
       top: "4px",
       fontSize: "16px",
       position: "relative",
       marginRight: "3px",
-      marginLeft: "3px"
-    }
+      marginLeft: "3px",
+    },
   },
   cardCategory: {
     color: "#999999",
@@ -35,14 +35,14 @@ const dashboardStyle = {
     fontSize: "14px",
     marginTop: "0",
     paddingTop: "10px",
-    marginBottom: "0"
+    marginBottom: "0",
   },
   cardCategoryWhite: {
     color: "rgba(255,255,255,.62)",
     margin: "0",
     fontSize: "14px",
     marginTop: "0",
-    marginBottom: "0"
+    marginBottom: "0",
   },
   cardTitle: {
     color: "#3C4858",
@@ -55,8 +55,8 @@ const dashboardStyle = {
     "& small": {
       color: "#777",
       fontWeight: "400",
-      lineHeight: "1"
-    }
+      lineHeight: "1",
+    },
   },
   cardTitleWhite: {
     color: "#FFFFFF",
@@ -69,9 +69,9 @@ const dashboardStyle = {
     "& small": {
       color: "#777",
       fontWeight: "400",
-      lineHeight: "1"
-    }
-  }
+      lineHeight: "1",
+    },
+  },
 };
 
 export default dashboardStyle;
