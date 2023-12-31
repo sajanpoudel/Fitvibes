@@ -11,23 +11,14 @@ import withStyles from "@material-ui/core/styles/withStyles";
 import cardFooterStyle from "../../assets/jss/modules/components/cardFooterStyle.jsx";
 
 function CardFooter({ ...props }) {
-  const {
-    classes,
-    className,
-    children,
-    plain,
-    profile,
-    stats,
-    chart,
-    ...rest
-  } = props;
+  const { classes, className, children, plain, profile, stats, chart, ...rest } = props;
   const cardFooterClasses = classNames({
     [classes.cardFooter]: true,
     [classes.cardFooterPlain]: plain,
     [classes.cardFooterProfile]: profile,
     [classes.cardFooterStats]: stats,
     [classes.cardFooterChart]: chart,
-    [className]: className !== undefined
+    [className]: className !== undefined,
   });
   return (
     <div className={cardFooterClasses} {...rest}>
@@ -42,7 +33,7 @@ CardFooter.propTypes = {
   plain: PropTypes.bool,
   profile: PropTypes.bool,
   stats: PropTypes.bool,
-  chart: PropTypes.bool
+  chart: PropTypes.bool,
 };
 
 export default withStyles(cardFooterStyle)(CardFooter);
