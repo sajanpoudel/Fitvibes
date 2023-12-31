@@ -16,7 +16,7 @@ function CardBody({ ...props }) {
     [classes.cardBody]: true,
     [classes.cardBodyPlain]: plain,
     [classes.cardBodyProfile]: profile,
-    [className]: className !== undefined
+    [className]: className !== undefined,
   });
   return (
     <div className={cardBodyClasses} {...rest}>
@@ -29,7 +29,7 @@ CardBody.propTypes = {
   classes: PropTypes.object.isRequired,
   className: PropTypes.string,
   plain: PropTypes.bool,
-  profile: PropTypes.bool
+  profile: PropTypes.bool,
 };
 
 export default withStyles(cardBodyStyle)(CardBody);
