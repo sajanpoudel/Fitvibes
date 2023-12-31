@@ -15,7 +15,7 @@ function CardIcon({ ...props }) {
   const cardIconClasses = classNames({
     [classes.cardIcon]: true,
     [classes[color + "CardHeader"]]: color,
-    [className]: className !== undefined
+    [className]: className !== undefined,
   });
   return (
     <div className={cardIconClasses} {...rest}>
@@ -27,14 +27,7 @@ function CardIcon({ ...props }) {
 CardIcon.propTypes = {
   classes: PropTypes.object.isRequired,
   className: PropTypes.string,
-  color: PropTypes.oneOf([
-    "warning",
-    "success",
-    "danger",
-    "info",
-    "primary",
-    "rose"
-  ])
+  color: PropTypes.oneOf(["warning", "success", "danger", "info", "primary", "rose"]),
 };
 
 export default withStyles(cardIconStyle)(CardIcon);
