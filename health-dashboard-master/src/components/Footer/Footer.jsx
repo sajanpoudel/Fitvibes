@@ -41,7 +41,7 @@ function Footer({ ...props }) {
 }
 
 Footer.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
 };
 
 export default withStyles(footerStyle)(Footer);
