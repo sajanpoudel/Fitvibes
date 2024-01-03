@@ -14,7 +14,7 @@ function Snackbar({ ...props }) {
   const { classes, message, color, close, icon, place, open } = props;
   var action = [];
   const messageClasses = classNames({
-    [classes.iconMessage]: icon !== undefined
+    [classes.iconMessage]: icon !== undefined,
   });
   if (close !== undefined) {
     action = [
@@ -26,7 +26,7 @@ function Snackbar({ ...props }) {
         onClick={() => props.closeNotification()}
       >
         <Close className={classes.close} />
-      </IconButton>
+      </IconButton>,
     ];
   }
   return (
@@ -34,9 +34,7 @@ function Snackbar({ ...props }) {
       anchorOrigin={{
         vertical: place.indexOf("t") === -1 ? "bottom" : "top",
         horizontal:
-          place.indexOf("l") !== -1
-            ? "left"
-            : place.indexOf("c") !== -1 ? "center" : "right"
+          place.indexOf("l") !== -1 ? "left" : place.indexOf("c") !== -1 ? "center" : "right",
       }}
       open={open}
       message={
@@ -49,8 +47,8 @@ function Snackbar({ ...props }) {
       ContentProps={{
         classes: {
           root: classes.root + " " + classes[color],
-          message: classes.message
-        }
+          message: classes.message,
+        },
       }}
     />
   );
@@ -63,7 +61,7 @@ Snackbar.propTypes = {
   close: PropTypes.bool,
   icon: PropTypes.func,
   place: PropTypes.oneOf(["tl", "tr", "tc", "br", "bl", "bc"]),
-  open: PropTypes.bool
+  open: PropTypes.bool,
 };
 
 export default withStyles(snackbarContentStyle)(Snackbar);
