@@ -14,18 +14,16 @@ import Icon from "@material-ui/core/Icon";
 import headerStylelogo from "../../assets/img/health_log.png";
 import sidebarStyle from "../../assets/jss/modules/components/sidebarStyle.jsx";
 
-
 const Sidebar = ({ ...props }) => {
   // verifies if routeName is the one active (in browser input)
   function activeRoute(routeName) {
     return props.location.pathname.indexOf(routeName) > -1 ? true : false;
   }
 
-  function renderWebpage(){
+  function renderWebpage() {
     // Replace 'https://example.com' with the URL of the webpage you want to render.
-    window.location.href = 'https://example.com';
-  };
-
+    window.location.href = "https://example.com";
+  }
 
   const { classes, color, logo, logoText, routes } = props;
   var links = (
@@ -37,15 +35,15 @@ const Sidebar = ({ ...props }) => {
         if (prop.path === "/upgrade-to-pro") {
           activePro = classes.activePro + " ";
           listItemClasses = classNames({
-            [" " + classes[color]]: true
+            [" " + classes[color]]: true,
           });
         } else {
           listItemClasses = classNames({
-            [" " + classes[color]]: activeRoute(prop.path)
+            [" " + classes[color]]: activeRoute(prop.path),
           });
         }
         const whiteFontClasses = classNames({
-          [" " + classes.whiteFont]: activeRoute(prop.path)
+          [" " + classes.whiteFont]: activeRoute(prop.path),
         });
         return (
           <NavLink
@@ -56,11 +54,7 @@ const Sidebar = ({ ...props }) => {
           >
             <ListItem button className={classes.itemLink + listItemClasses}>
               <ListItemIcon className={classes.itemIcon + whiteFontClasses}>
-                {typeof prop.icon === "string" ? (
-                  <Icon>{headerStylelogo}</Icon>
-                ) : (
-                  <prop.icon />
-                )}
+                {typeof prop.icon === "string" ? <Icon>{headerStylelogo}</Icon> : <prop.icon />}
               </ListItemIcon>
               <ListItemText
                 primary={prop.sidebarName}
@@ -82,15 +76,15 @@ const Sidebar = ({ ...props }) => {
         if (prop.path === "/upgrade-to-pro") {
           activePro = classes.activePro + " ";
           listItemClasses = classNames({
-            [" " + classes[color]]: true
+            [" " + classes[color]]: true,
           });
         } else {
           listItemClasses = classNames({
-            [" " + classes[color]]: activeRoute(prop.path)
+            [" " + classes[color]]: activeRoute(prop.path),
           });
         }
         const whiteFontClasses = classNames({
-          [" " + classes.whiteFont]: activeRoute(prop.path)
+          [" " + classes.whiteFont]: activeRoute(prop.path),
         });
         return (
           <NavLink
@@ -101,19 +95,13 @@ const Sidebar = ({ ...props }) => {
           >
             <ListItem button className={classes.itemLink + listItemClasses}>
               <ListItemIcon className={classes.itemIcon + whiteFontClasses}>
-                {typeof prop.icon === "string" ? (
-                  <Icon>{prop.icon}</Icon>
-                ) : (
-                  <prop.icon />
-                )}
+                {typeof prop.icon === "string" ? <Icon>{prop.icon}</Icon> : <prop.icon />}
               </ListItemIcon>
               {/* <a href="file:///E:/mernProjects/hackHarvard/Health/index.html"> */}
-              <ListItemText 
+              <ListItemText
                 primary="Health AI"
                 className={classes.itemText + whiteFontClasses}
                 disableTypography={true}
-                
-                
               />
             </ListItem>
           </NavLink>
@@ -132,10 +120,9 @@ const Sidebar = ({ ...props }) => {
     </div>
   );
 
-
   renderWebpage = () => {
     // Replace 'https://example.com' with the URL of the webpage you want to render.
-    window.location.href = 'https://youtube.com';
+    window.location.href = "https://youtube.com";
   };
 
   return (
@@ -146,11 +133,11 @@ const Sidebar = ({ ...props }) => {
           anchor="right"
           open={props.open}
           classes={{
-            paper: classes.drawerPaper
+            paper: classes.drawerPaper,
           }}
           onClose={props.handleDrawerToggle}
           ModalProps={{
-            keepMounted: true // Better open performance on mobile.
+            keepMounted: true, // Better open performance on mobile.
           }}
         >
           {brand}
@@ -163,16 +150,20 @@ const Sidebar = ({ ...props }) => {
           variant="permanent"
           open
           classes={{
-            paper: classes.drawerPaper
+            paper: classes.drawerPaper,
           }}
         >
           {brand}
           <div className={classes.sidebarWrapper}>
             {links}
-            <div onClick={(e)=> { window.location.href = 'http://127.0.0.1:5500/Health/index.html';}}>{chatbot}</div>
-
-            
+            <div
+              onClick={(e) => {
+                window.location.href = "http://127.0.0.1:5500/Health/index.html";
+              }}
+            >
+              {chatbot}
             </div>
+          </div>
           {/* <div className={classes.sidebarWrapper}></div> */}
         </Drawer>
       </Hidden>
@@ -181,7 +172,7 @@ const Sidebar = ({ ...props }) => {
 };
 
 Sidebar.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
 };
 
 export default withStyles(sidebarStyle)(Sidebar);
