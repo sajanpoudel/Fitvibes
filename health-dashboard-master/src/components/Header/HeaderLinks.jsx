@@ -18,13 +18,13 @@ import headerLinksStyle from "../../assets/jss/modules/components/headerLinksSty
 
 class HeaderLinks extends React.Component {
   state = {
-    open: false
+    open: false,
   };
   handleToggle = () => {
-    this.setState(state => ({ open: !state.open }));
+    this.setState((state) => ({ open: !state.open }));
   };
 
-  handleClose = event => {
+  handleClose = (event) => {
     if (this.anchorEl.contains(event.target)) {
       return;
     }
@@ -39,7 +39,7 @@ class HeaderLinks extends React.Component {
       <div>
         <div className={classes.manager}>
           <Button
-            buttonRef={node => {
+            buttonRef={(node) => {
               this.anchorEl = node;
             }}
             color={window.innerWidth > 959 ? "transparent" : "white"}
@@ -63,28 +63,20 @@ class HeaderLinks extends React.Component {
             anchorEl={this.anchorEl}
             transition
             disablePortal
-            className={
-              classNames({ [classes.popperClose]: !open }) +
-              " " +
-              classes.popperNav
-            }
+            className={classNames({ [classes.popperClose]: !open }) + " " + classes.popperNav}
           >
             {({ TransitionProps, placement }) => (
               <Grow
                 {...TransitionProps}
                 id="menu-list-grow"
                 style={{
-                  transformOrigin:
-                    placement === "bottom" ? "center top" : "center bottom"
+                  transformOrigin: placement === "bottom" ? "center top" : "center bottom",
                 }}
               >
                 <Paper>
                   <ClickAwayListener onClickAway={this.handleClose}>
                     <MenuList role="menu">
-                      <MenuItem
-                        onClick={this.handleClose}
-                        className={classes.dropdownItem}
-                      >
+                      <MenuItem onClick={this.handleClose} className={classes.dropdownItem}>
                         Your data has been updated.
                       </MenuItem>
                     </MenuList>
