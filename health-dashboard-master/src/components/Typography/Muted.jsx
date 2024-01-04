@@ -7,15 +7,11 @@ import typographyStyle from "../../assets/jss/modules/components/typographyStyle
 
 function Muted({ ...props }) {
   const { classes, children } = props;
-  return (
-    <div className={classes.defaultFontStyle + " " + classes.mutedText}>
-      {children}
-    </div>
-  );
+  return <div className={classes.defaultFontStyle + " " + classes.mutedText}>{children}</div>;
 }
 
 Muted.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
 };
 
 export default withStyles(typographyStyle)(Muted);
