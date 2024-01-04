@@ -7,15 +7,11 @@ import typographyStyle from "../../assets/jss/modules/components/typographyStyle
 
 function Info({ ...props }) {
   const { classes, children } = props;
-  return (
-    <div className={classes.defaultFontStyle + " " + classes.infoText}>
-      {children}
-    </div>
-  );
+  return <div className={classes.defaultFontStyle + " " + classes.infoText}>{children}</div>;
 }
 
 Info.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
 };
 
 export default withStyles(typographyStyle)(Info);
