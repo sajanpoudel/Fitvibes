@@ -7,15 +7,11 @@ import typographyStyle from "../../assets/jss/modules/components/typographyStyle
 
 function Danger({ ...props }) {
   const { classes, children } = props;
-  return (
-    <div className={classes.defaultFontStyle + " " + classes.dangerText}>
-      {children}
-    </div>
-  );
+  return <div className={classes.defaultFontStyle + " " + classes.dangerText}>{children}</div>;
 }
 
 Danger.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
 };
 
 export default withStyles(typographyStyle)(Danger);
