@@ -14,18 +14,13 @@ function SnackbarContent({ ...props }) {
   const { classes, message, color, close, icon } = props;
   var action = [];
   const messageClasses = classNames({
-    [classes.iconMessage]: icon !== undefined
+    [classes.iconMessage]: icon !== undefined,
   });
   if (close !== undefined) {
     action = [
-      <IconButton
-        className={classes.iconButton}
-        key="close"
-        aria-label="Close"
-        color="inherit"
-      >
+      <IconButton className={classes.iconButton} key="close" aria-label="Close" color="inherit">
         <Close className={classes.close} />
-      </IconButton>
+      </IconButton>,
     ];
   }
   return (
@@ -38,7 +33,7 @@ function SnackbarContent({ ...props }) {
       }
       classes={{
         root: classes.root + " " + classes[color],
-        message: classes.message
+        message: classes.message,
       }}
       action={action}
     />
@@ -50,7 +45,7 @@ SnackbarContent.propTypes = {
   message: PropTypes.node.isRequired,
   color: PropTypes.oneOf(["info", "success", "warning", "danger", "primary"]),
   close: PropTypes.bool,
-  icon: PropTypes.func
+  icon: PropTypes.func,
 };
 
 export default withStyles(snackbarContentStyle)(SnackbarContent);
