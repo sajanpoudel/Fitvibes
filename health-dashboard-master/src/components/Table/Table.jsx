@@ -20,10 +20,7 @@ function CustomTable({ ...props }) {
             <TableRow>
               {tableHead.map((prop, key) => {
                 return (
-                  <TableCell
-                    className={classes.tableCell + " " + classes.tableHeadCell}
-                    key={key}
-                  >
+                  <TableCell className={classes.tableCell + " " + classes.tableHeadCell} key={key}>
                     {prop}
                   </TableCell>
                 );
@@ -52,7 +49,7 @@ function CustomTable({ ...props }) {
 }
 
 CustomTable.defaultProps = {
-  tableHeaderColor: "gray"
+  tableHeaderColor: "gray",
 };
 
 CustomTable.propTypes = {
@@ -64,10 +61,10 @@ CustomTable.propTypes = {
     "success",
     "info",
     "rose",
-    "gray"
+    "gray",
   ]),
   tableHead: PropTypes.arrayOf(PropTypes.string),
-  tableData: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string))
+  tableData: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string)),
 };
 
 export default withStyles(tableStyle)(CustomTable);
