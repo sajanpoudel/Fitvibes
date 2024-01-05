@@ -25,8 +25,7 @@ import headerStylelogo from "../../assets/img/health_log.png";
 const switchRoutes = (
   <Switch>
     {dashboardRoutes.map((prop, key) => {
-      if (prop.redirect)
-        return <Redirect from={prop.path} to={prop.to} key={key} />;
+      if (prop.redirect) return <Redirect from={prop.path} to={prop.to} key={key} />;
       return <Route path={prop.path} component={prop.component} key={key} />;
     })}
   </Switch>
@@ -36,7 +35,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      mobileOpen: false
+      mobileOpen: false,
     };
     this.resizeFunction = this.resizeFunction.bind(this);
   }
@@ -81,15 +80,10 @@ class App extends React.Component {
           color="blue"
           {...rest}
         />
-        
+
         <div className={classes.mainPanel} ref="mainPanel">
-          <Header
-            routes={dashboardRoutes}
-            handleDrawerToggle={this.handleDrawerToggle}
-            {...rest}
-          />
-          
-          
+          <Header routes={dashboardRoutes} handleDrawerToggle={this.handleDrawerToggle} {...rest} />
+
           {/* On the /maps route we want the map to be on full screen - this is not possible if the content and conatiner classes are present because they have some paddings which would make the map smaller */}
           {this.getRoute() ? (
             <div className={classes.content}>
@@ -100,14 +94,13 @@ class App extends React.Component {
           )}
           {this.getRoute() ? <Footer /> : null}
         </div>
-        
       </div>
     );
   }
 }
 
 App.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
 };
 
 export default withStyles(dashboardStyle)(App);
