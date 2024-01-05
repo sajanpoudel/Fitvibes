@@ -7,15 +7,11 @@ import typographyStyle from "../../assets/jss/modules/components/typographyStyle
 
 function Warning({ ...props }) {
   const { classes, children } = props;
-  return (
-    <div className={classes.defaultFontStyle + " " + classes.warningText}>
-      {children}
-    </div>
-  );
+  return <div className={classes.defaultFontStyle + " " + classes.warningText}>{children}</div>;
 }
 
 Warning.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
 };
 
 export default withStyles(typographyStyle)(Warning);
