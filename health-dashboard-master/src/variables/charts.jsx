@@ -18,7 +18,7 @@ var delays2 = 80,
 const lineChart = {
   options: {
     lineSmooth: Chartist.Interpolation.cardinal({
-      tension: 0
+      tension: 0,
     }),
     low: 0,
     high: 6, // we recommend you to set the high sa the biggest value + something for a better look
@@ -26,25 +26,21 @@ const lineChart = {
       top: 0,
       right: 0,
       bottom: 0,
-      left: 0
-    }
+      left: 0,
+    },
   },
   // for animation
   animation: {
-    draw: function(data) {
+    draw: function (data) {
       if (data.type === "line" || data.type === "area") {
         data.element.animate({
           d: {
             begin: 600,
             dur: 700,
-            from: data.path
-              .clone()
-              .scale(1, 0)
-              .translate(0, data.chartRect.height())
-              .stringify(),
+            from: data.path.clone().scale(1, 0).translate(0, data.chartRect.height()).stringify(),
             to: data.path.clone().stringify(),
-            easing: Chartist.Svg.Easing.easeOutQuint
-          }
+            easing: Chartist.Svg.Easing.easeOutQuint,
+          },
         });
       } else if (data.type === "point") {
         data.element.animate({
@@ -53,12 +49,12 @@ const lineChart = {
             dur: durations,
             from: 0,
             to: 1,
-            easing: "ease"
-          }
+            easing: "ease",
+          },
         });
       }
-    }
-  }
+    },
+  },
 };
 
 // ##############################
@@ -68,7 +64,7 @@ const lineChart = {
 const barChart = {
   options: {
     axisX: {
-      showGrid: false
+      showGrid: false,
     },
     low: 0,
     high: 6,
@@ -76,8 +72,8 @@ const barChart = {
       top: 0,
       right: 5,
       bottom: 0,
-      left: 0
-    }
+      left: 0,
+    },
   },
   responsiveOptions: [
     [
@@ -85,15 +81,15 @@ const barChart = {
       {
         seriesBarDistance: 5,
         axisX: {
-          labelInterpolationFnc: function(value) {
+          labelInterpolationFnc: function (value) {
             return value[0];
-          }
-        }
-      }
-    ]
+          },
+        },
+      },
+    ],
   ],
   animation: {
-    draw: function(data) {
+    draw: function (data) {
       if (data.type === "bar") {
         data.element.animate({
           opacity: {
@@ -101,15 +97,15 @@ const barChart = {
             dur: durations2,
             from: 0,
             to: 1,
-            easing: "ease"
-          }
+            easing: "ease",
+          },
         });
       }
-    }
-  }
+    },
+  },
 };
 
 module.exports = {
   lineChart,
-  barChart
+  barChart,
 };
