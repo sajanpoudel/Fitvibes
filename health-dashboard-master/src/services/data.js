@@ -10,7 +10,7 @@ const monthNames = [
   "Sep",
   "Oct",
   "Nov",
-  "Dec"
+  "Dec",
 ];
 
 function groupmonth(array) {
