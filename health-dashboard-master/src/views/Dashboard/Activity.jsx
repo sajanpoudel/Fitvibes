@@ -16,18 +16,12 @@ class Activity extends Component {
   }
 
   render() {
-    const latestActivity = this.state.activityData[
-      this.state.activityData.length - 1
-    ];
+    const latestActivity = this.state.activityData[this.state.activityData.length - 1];
 
     return (
       <div>
         {latestActivity && (
-          <pre>
-            {parseFloat(
-              latestActivity.distance_data.summary.distance_meters
-            ).toFixed(2)}
-          </pre>
+          <pre>{parseFloat(latestActivity.distance_data.summary.distance_meters).toFixed(2)}</pre>
         )}
       </div>
     );
