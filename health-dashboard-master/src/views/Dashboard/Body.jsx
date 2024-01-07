@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 class Body extends Component {
   constructor(props) {
@@ -9,16 +9,14 @@ class Body extends Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:5000/api/body')
+    fetch("http://localhost:5000/api/body")
       .then((response) => response.json())
       .then((data) => this.setState({ activityData: data }))
-      .catch((error) => console.error('Error fetching activity data:', error));
+      .catch((error) => console.error("Error fetching activity data:", error));
   }
 
   render() {
-    const latestActivity = this.state.activityData[
-      this.state.activityData.length - 1
-    ];
+    const latestActivity = this.state.activityData[this.state.activityData.length - 1];
 
     return (
       <div>
