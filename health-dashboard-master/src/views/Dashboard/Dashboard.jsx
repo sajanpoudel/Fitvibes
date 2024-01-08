@@ -24,7 +24,7 @@ import CardFooter from "../../components/Card/CardFooter.jsx";
 import Body from "./Body.jsx";
 import Activity from "./Activity.jsx";
 import Daily from "./Daily.jsx";
-import Sleep from "./Sleep.jsx"
+import Sleep from "./Sleep.jsx";
 
 import Graph2 from "./Graph2.jsx";
 import Graph3 from "./Graph3.jsx";
@@ -33,22 +33,21 @@ import Graph4 from "./Graph4.jsx";
 import { lineChart } from "../../variables/charts.jsx";
 // import { useState, useEffect } from "react";
 
-
 // import { MongoClient } from "mongodb";
 
 import {
   getFutureStressData,
   getMoodData,
   getRuminationData,
-  getSleepData
+  getSleepData,
 } from "../../services/data";
 
 import dashboardStyle from "../../assets/jss/modules/views/dashboardStyle.jsx";
 import Graph1 from "./Graph1.jsx";
 // import Body from "./Body.jsx";
 
-async function generateGraph(){
-  const userToken = await fetch("")
+async function generateGraph() {
+  const userToken = await fetch("");
 }
 
 class Dashboard extends React.Component {
@@ -59,22 +58,22 @@ class Dashboard extends React.Component {
       stressData: { labels: [], series: [] },
       moodData: { labels: [], series: [] },
       ruminationData: { labels: [], series: [] },
-      sleepData: { labels: [], series: [] }
+      sleepData: { labels: [], series: [] },
     };
 
-    getFutureStressData().then(data => {
+    getFutureStressData().then((data) => {
       this.setState({ stressData: data });
     });
 
-    getMoodData().then(data => {
+    getMoodData().then((data) => {
       this.setState({ moodData: data });
     });
 
-    getRuminationData().then(data => {
+    getRuminationData().then((data) => {
       this.setState({ ruminationData: data });
     });
 
-    getSleepData().then(data => {
+    getSleepData().then((data) => {
       this.setState({ sleepData: data });
     });
   }
@@ -83,7 +82,7 @@ class Dashboard extends React.Component {
     this.setState({ value });
   };
 
-  handleChangeIndex = index => {
+  handleChangeIndex = (index) => {
     this.setState({ value: index });
   };
 
@@ -109,8 +108,6 @@ class Dashboard extends React.Component {
     return "N/A";
   }
 
-
-
   render() {
     const { classes } = this.props;
     const { stressData, moodData, ruminationData, sleepData } = this.state;
@@ -133,7 +130,7 @@ class Dashboard extends React.Component {
                   <Danger>
                     <Warning />
                   </Danger>
-                  <a href="#" onClick={e => e.preventDefault()}>
+                  <a href="#" onClick={(e) => e.preventDefault()}>
                     Improve your score
                   </a>
                 </div>
@@ -163,7 +160,6 @@ class Dashboard extends React.Component {
             <Card>
               <CardHeader color="danger" stats icon>
                 <CardIcon color="danger">
-
                   <Icon>av_timer</Icon>
                 </CardIcon>
                 <p className={classes.cardCategory}>Total Calories Burned</p>
@@ -200,10 +196,7 @@ class Dashboard extends React.Component {
           </GridItem>
         </GridContainer>
 
-
-
-
-{/* 
+        {/* 
 
 
       
@@ -325,25 +318,28 @@ class Dashboard extends React.Component {
           </GridItem>
         </GridContainer> */}
 
-<h1>API Chart</h1>
+        <h1>API Chart</h1>
 
-        <div className="graph"style={{
-  display: 'grid',
-  gridTemplateColumns: 'repeat(2, 1fr)',
-  gap: '10px', // Adjust the gap as needed
-}}><Graph1></Graph1>
-      <Graph2></Graph2>
-      <Graph3></Graph3>
-      <Graph4></Graph4></div>
-
-
+        <div
+          className="graph"
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(2, 1fr)",
+            gap: "10px", // Adjust the gap as needed
+          }}
+        >
+          <Graph1></Graph1>
+          <Graph2></Graph2>
+          <Graph3></Graph3>
+          <Graph4></Graph4>
+        </div>
       </div>
     );
   }
 }
 
 Dashboard.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
 };
 
 export default withStyles(dashboardStyle)(Dashboard);
