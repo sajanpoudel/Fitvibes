@@ -17,3 +17,7 @@ function fakeDb(documents) {
     }),
   };
 }
+
+test("projections cover the four collections in order", () => {
+  assert.deepEqual(projections.map(([name]) => name), ["daily", "activity", "body", "sleep"]);
+});
