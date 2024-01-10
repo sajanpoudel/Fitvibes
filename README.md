@@ -1,5 +1,5 @@
 <h1>Fitvibes </h1>
-![image](https://github.com/sajanpoudel/Fitvibes/assets/35656849/04e0d33a-328e-4255-8f0f-87cdee8e61e4)
+![image](https://github.com/sajanpoudel/Fitvibes/blob/img/fitvibes.png?raw=true)
 
 <h3>Inspiration</h3>
 Our conviction that technology has the capacity to enhance our lives serves as our inspiration. In the modern world, where health is mostly ignored, we feel obligated to adapt traditional technologies and smartwatches into personal health coaches. We aim to use technology to provide individuals with the skills and knowledge they need to live longer, healthier lives. 'Health is Wealth' serves as the project's major driving principle. The goal of this effort is to save lives and enhance human health. It goes beyond data technology. It demonstrates how technology can help us live healthier and happier lives.
