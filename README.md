@@ -1,4 +1,4 @@
-<h1>Fitvibes </h1>
+!!!Fitvibes!!!
 ![Home Page](https://raw.githubusercontent.com/sajanpoudel/Fitvibes/5d3ae4ac385403dd8cc8f791f5cbf25383759ac6/fitvibes.png)
 
 <h3>Inspiration</h3>
