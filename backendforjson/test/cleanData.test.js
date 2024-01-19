@@ -21,3 +21,9 @@ function fakeDb(documents) {
 test("projections cover the four collections in order", () => {
   assert.deepEqual(projections.map(([name]) => name), ["daily", "activity", "body", "sleep"]);
 });
+
+test("every projection keeps only fields to include", () => {
+  for (const [, fields] of projections) {
+    assert.ok(Object.values(fields).every((value) => value === 1));
+  }
+});
