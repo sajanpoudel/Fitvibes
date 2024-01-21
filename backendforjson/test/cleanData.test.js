@@ -27,3 +27,9 @@ test("every projection keeps only fields to include", () => {
     assert.ok(Object.values(fields).every((value) => value === 1));
   }
 });
+
+test("the _id field is always excluded", async () => {
+  const db = fakeDb({});
+  await buildCleanData(db);
+  assert.ok(db.calls.every((call) => call.options.projection._id === 0));
+});
