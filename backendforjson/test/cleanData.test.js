@@ -33,3 +33,9 @@ test("the _id field is always excluded", async () => {
   await buildCleanData(db);
   assert.ok(db.calls.every((call) => call.options.projection._id === 0));
 });
+
+test("one document is read from every collection", async () => {
+  const db = fakeDb({});
+  await buildCleanData(db);
+  assert.deepEqual(db.calls.map((call) => call.name), ["daily", "activity", "body", "sleep"]);
+});
