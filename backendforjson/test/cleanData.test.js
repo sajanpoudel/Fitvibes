@@ -39,3 +39,8 @@ test("one document is read from every collection", async () => {
   await buildCleanData(db);
   assert.deepEqual(db.calls.map((call) => call.name), ["daily", "activity", "body", "sleep"]);
 });
+
+test("documents are merged into one object", async () => {
+  const merged = await buildCleanData(fakeDb({ daily: { a: 1 }, body: { b: 2 } }));
+  assert.deepEqual(merged, { a: 1, b: 2 });
+});
