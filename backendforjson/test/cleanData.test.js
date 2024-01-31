@@ -44,3 +44,8 @@ test("documents are merged into one object", async () => {
   const merged = await buildCleanData(fakeDb({ daily: { a: 1 }, body: { b: 2 } }));
   assert.deepEqual(merged, { a: 1, b: 2 });
 });
+
+test("a later collection wins when keys overlap", async () => {
+  const merged = await buildCleanData(fakeDb({ daily: { shared: "daily" }, activity: { shared: "activity" } }));
+  assert.equal(merged.shared, "activity");
+});
