@@ -49,3 +49,7 @@ test("a later collection wins when keys overlap", async () => {
   const merged = await buildCleanData(fakeDb({ daily: { shared: "daily" }, activity: { shared: "activity" } }));
   assert.equal(merged.shared, "activity");
 });
+
+test("missing documents are skipped", async () => {
+  assert.deepEqual(await buildCleanData(fakeDb({})), {});
+});
