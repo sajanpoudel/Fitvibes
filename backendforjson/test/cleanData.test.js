@@ -59,3 +59,13 @@ test("GET /api/cleanData returns the merged object", async () => {
   assert.equal(res.status, 200);
   assert.deepEqual(res.body, { a: 1, s: 3 });
 });
+
+test("database errors give a 500 with an error body", async () => {
+  const db = { collection: () => ({ findOne: async () => { throw new Error("down"); } }) };
+  const originalError = console.error;
+  console.error = () => {};
+  const res = await request(createApp(db)).get("/api/cleanData");
+  console.error = originalError;
+  assert.equal(res.status, 500);
+  assert.deepEqual(res.body, { error: "An error occurred" });
+});
