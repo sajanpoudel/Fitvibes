@@ -53,3 +53,9 @@ test("a later collection wins when keys overlap", async () => {
 test("missing documents are skipped", async () => {
   assert.deepEqual(await buildCleanData(fakeDb({})), {});
 });
+
+test("GET /api/cleanData returns the merged object", async () => {
+  const res = await request(createApp(fakeDb({ daily: { a: 1 }, sleep: { s: 3 } }))).get("/api/cleanData");
+  assert.equal(res.status, 200);
+  assert.deepEqual(res.body, { a: 1, s: 3 });
+});
