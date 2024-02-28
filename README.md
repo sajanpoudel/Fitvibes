@@ -35,6 +35,7 @@ MONGO_URI="mongodb+srv://<user>:<password>@<cluster>.mongodb.net/" node index.js
 | Endpoint | Server | Returns |
 | --- | --- | --- |
 | `/api/activity`, `/api/body`, `/api/daily`, `/api/sleep` | backend | The documents of that collection, optionally `?limit=N` (1 to 1000) |
-| `/api/cleanData` | backendforjson | A merged summary of selected fields from all four collections |
+| `/api/cleanData` | backendforjson | A merged summary of selected fields from all four collections, cached for one minute |
+| `/api/health` | both | `{ "status": "ok" }` without touching the database |
 
 The chat page in `Health/` expects an OpenAI API key in `API_KEY` inside `ChatAI.js`. It calls the chat completions endpoint with `gpt-3.5-turbo`.
